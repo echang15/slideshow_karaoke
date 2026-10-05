@@ -26,6 +26,7 @@
         weave each new slide into their speech as it appears — no script,
         no warning, no mercy.
       </p>
+      <p>Slides don't come with a forced topic or caption — just improvise off whatever shows up. If a speaker wants a starting topic for the whole speech, they can optionally click "Suggest a Topic" on the presenter screen.</p>
       <p>Everyone in the group gets their own unique set of slides, so nobody can prepare by watching someone else go first.</p>
     </details>
 
@@ -55,8 +56,8 @@
       <div class="field-row">
         <label for="slide-style">Slide style</label>
         <select id="slide-style">
-          <option value="photo">Photo + caption (needs internet)</option>
-          <option value="text">Caption only (works offline)</option>
+          <option value="photo">Random photos (needs internet)</option>
+          <option value="text">Plain numbered cards (works offline)</option>
         </select>
       </div>
 
@@ -94,12 +95,20 @@
   <main class="stage">
     <h2 id="speaker-name" class="speaker-name"></h2>
 
+    <div id="topic-box" class="topic-box">
+      <button id="suggest-topic-btn" type="button" class="btn-secondary">💡 Suggest a Topic</button>
+      <div id="topic-display" class="topic-display hidden">
+        <span id="topic-text" class="topic-text"></span>
+        <div class="topic-actions">
+          <button id="reroll-topic-btn" type="button" class="btn-icon" title="Suggest another">🔁</button>
+          <button id="clear-topic-btn" type="button" class="btn-icon" title="Clear topic">✕</button>
+        </div>
+      </div>
+    </div>
+
     <div id="slide-card" class="slide-card">
       <img id="slide-image" class="slide-image" alt="">
-      <div class="slide-caption">
-        <div id="slide-title" class="slide-title"></div>
-        <div id="slide-subtitle" class="slide-subtitle"></div>
-      </div>
+      <div id="plain-slide-number" class="plain-slide-number"></div>
       <div id="slide-dots" class="slide-dots"></div>
     </div>
 

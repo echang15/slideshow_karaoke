@@ -24,12 +24,17 @@
   const speakerNameEl = document.getElementById('speaker-name');
   const slideCard = document.getElementById('slide-card');
   const slideImage = document.getElementById('slide-image');
-  const slideTitleEl = document.getElementById('slide-title');
-  const slideSubtitleEl = document.getElementById('slide-subtitle');
+  const plainSlideNumberEl = document.getElementById('plain-slide-number');
   const slideDotsEl = document.getElementById('slide-dots');
   const timerRingFg = document.getElementById('timer-ring-fg');
   const timerSecondsEl = document.getElementById('timer-seconds');
   const turnStatusEl = document.getElementById('turn-status');
+
+  const suggestTopicBtn = document.getElementById('suggest-topic-btn');
+  const topicDisplay = document.getElementById('topic-display');
+  const topicTextEl = document.getElementById('topic-text');
+  const rerollTopicBtn = document.getElementById('reroll-topic-btn');
+  const clearTopicBtn = document.getElementById('clear-topic-btn');
 
   const startPauseBtn = document.getElementById('start-pause-btn');
   const skipSlideBtn = document.getElementById('skip-slide-btn');
@@ -244,6 +249,7 @@
     turnStatusEl.textContent = 'Press Space or Start when ready';
     turnStatusEl.classList.remove('finished');
     updateOverallProgress();
+    resetTopicBox();
   }
 
   function loadSlide(slideIndex, animate) {
@@ -265,8 +271,7 @@
   function renderSlide() {
     const player = game.players[game.currentPlayerIndex];
     const slide = player.slides[game.currentSlideIndex];
-    slideTitleEl.textContent = slide.title;
-    slideSubtitleEl.textContent = slide.subtitle;
+    plainSlideNumberEl.textContent = `Slide ${game.currentSlideIndex + 1}`;
 
     if (game.slideStyle === 'photo') {
       slideCard.classList.remove('text-only');
@@ -276,7 +281,7 @@
         slideImage.classList.add('text-mode');
       };
       slideImage.src = `https://picsum.photos/id/${slide.imageId}/900/700`;
-      slideImage.alt = slide.title;
+      slideImage.alt = `Slide ${game.currentSlideIndex + 1}`;
     } else {
       slideCard.classList.add('text-only');
       slideImage.classList.add('text-mode');
@@ -452,6 +457,59 @@
       restartTurnBtn.click();
     }
   });
+
+  // ---------- Suggest a Topic ----------
+  const FALLBACK_TOPICS = [
+    'Describe your perfect weekend',
+    'A skill you wish you had',
+    'The best advice you ever ignored',
+    'Your most useless talent',
+    'A food combination everyone should try',
+  ];
+
+  let topicsPromise = null;
+
+  function loadTopics() {
+    if (!topicsPromise) {
+      topicsPromise = fetch('topics.md')
+        .then((res) => (res.ok ? res.text() : Promise.reject(new Error('fetch failed'))))
+        .then((text) => {
+          const lines = text
+            .split('\n')
+            .map((line) => line.match(/^\s*[-*]\s+(.*)/))
+            .filter(Boolean)
+            .map((m) => m[1].trim())
+            .filter(Boolean);
+          return lines.length ? lines : FALLBACK_TOPICS;
+        })
+        .catch(() => FALLBACK_TOPICS);
+    }
+    return topicsPromise;
+  }
+
+  function pickRandomTopic(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  function showTopic(text) {
+    topicTextEl.textContent = text;
+    topicDisplay.classList.remove('hidden');
+    suggestTopicBtn.classList.add('hidden');
+  }
+
+  function resetTopicBox() {
+    topicTextEl.textContent = '';
+    topicDisplay.classList.add('hidden');
+    suggestTopicBtn.classList.remove('hidden');
+  }
+
+  function suggestTopic() {
+    loadTopics().then((list) => showTopic(pickRandomTopic(list)));
+  }
+
+  suggestTopicBtn.addEventListener('click', suggestTopic);
+  rerollTopicBtn.addEventListener('click', suggestTopic);
+  clearTopicBtn.addEventListener('click', resetTopicBox);
 
   // ---------- Init ----------
   initSetupScreen();
