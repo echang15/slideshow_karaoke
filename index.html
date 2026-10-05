@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slideshow Karaoke</title>
+<meta name="description" content="A Toastmasters-inspired improv speaking game: random slides, a ticking clock, and no idea what's coming next.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8E%A4</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== SETUP SCREEN ===================== -->
+<section id="setup-screen" class="screen">
+  <div class="setup-card">
+    <h1>🎤 Slideshow Karaoke</h1>
+    <p class="tagline">Random slides. A ticking clock. Zero preparation allowed.</p>
+
+    <details class="rules" open>
+      <summary>How to play</summary>
+      <p>
+        Inspired by the Toastmasters improv activity: each speaker gets a
+        short speech (default <strong>90 seconds</strong>), built from a
+        sequence of random slides that auto-advance (default every
+        <strong>30 seconds</strong>). The speaker has to keep talking and
+        weave each new slide into their speech as it appears — no script,
+        no warning, no mercy.
+      </p>
+      <p>Everyone in the group gets their own unique set of slides, so nobody can prepare by watching someone else go first.</p>
+    </details>
+
+    <form id="setup-form">
+      <div class="field-row">
+        <label for="player-count">Number of speakers</label>
+        <input type="number" id="player-count" min="1" max="30" value="10" required>
+      </div>
+
+      <div class="field-row">
+        <label for="player-names">Speaker names <span class="hint">(optional, one per line)</span></label>
+        <textarea id="player-names" rows="3" placeholder="Leave blank to auto-number speakers&#10;e.g.&#10;Alex&#10;Jordan&#10;Priya"></textarea>
+      </div>
+
+      <div class="field-row two-col">
+        <div>
+          <label for="speech-length">Speech length (seconds)</label>
+          <input type="number" id="speech-length" min="10" max="600" step="5" value="90" required>
+        </div>
+        <div>
+          <label for="slide-length">Seconds per slide</label>
+          <input type="number" id="slide-length" min="5" max="120" step="5" value="30" required>
+        </div>
+      </div>
+      <p class="computed" id="computed-slides"></p>
+
+      <div class="field-row">
+        <label for="slide-style">Slide style</label>
+        <select id="slide-style">
+          <option value="photo">Photo + caption (needs internet)</option>
+          <option value="text">Caption only (works offline)</option>
+        </select>
+      </div>
+
+      <div class="field-row checkbox-row">
+        <label><input type="checkbox" id="sound-toggle" checked> Sound cues (slide change / time warnings)</label>
+      </div>
+
+      <details class="advanced">
+        <summary>Advanced: session code</summary>
+        <p class="hint">Slides are generated from this code. Reuse a code to recreate the exact same set of slides later, or share it with a co-host.</p>
+        <div class="field-row two-col">
+          <input type="text" id="session-code" maxlength="12" placeholder="e.g. 7K2QRX">
+          <button type="button" id="reroll-code" class="btn-secondary">🎲 New code</button>
+        </div>
+      </details>
+
+      <button type="submit" class="btn-primary btn-large">Start Game →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== PRESENTER SCREEN ===================== -->
+<section id="presenter-screen" class="screen hidden">
+  <header class="presenter-header">
+    <button id="back-to-setup" class="btn-icon" title="New game">⟵</button>
+    <div id="speaker-chips" class="speaker-chips"></div>
+    <div class="header-controls">
+      <button id="mute-toggle" class="btn-icon" title="Toggle sound">🔊</button>
+      <button id="fullscreen-toggle" class="btn-icon" title="Toggle fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <div class="overall-progress"><div id="overall-progress-bar" class="overall-progress-bar"></div></div>
+
+  <main class="stage">
+    <h2 id="speaker-name" class="speaker-name"></h2>
+
+    <div id="slide-card" class="slide-card">
+      <img id="slide-image" class="slide-image" alt="">
+      <div class="slide-caption">
+        <div id="slide-title" class="slide-title"></div>
+        <div id="slide-subtitle" class="slide-subtitle"></div>
+      </div>
+      <div id="slide-dots" class="slide-dots"></div>
+    </div>
+
+    <div class="timer-row">
+      <svg class="timer-ring" viewBox="0 0 120 120">
+        <circle class="timer-ring-bg" cx="60" cy="60" r="54"></circle>
+        <circle id="timer-ring-fg" class="timer-ring-fg" cx="60" cy="60" r="54"></circle>
+      </svg>
+      <div class="timer-label">
+        <span id="timer-seconds">30</span>
+        <span class="timer-unit">sec</span>
+      </div>
+    </div>
+
+    <p id="turn-status" class="turn-status">Press <kbd>Space</kbd> or Start when ready</p>
+
+    <div class="controls">
+      <button id="start-pause-btn" class="btn-primary btn-large">▶ Start</button>
+      <button id="skip-slide-btn" class="btn-secondary">⏭ Skip Slide</button>
+      <button id="restart-turn-btn" class="btn-secondary">↺ Restart Turn</button>
+      <button id="next-speaker-btn" class="btn-primary">Next Speaker →</button>
+    </div>
+  </main>
+</section>
+
+<!-- ===================== DONE SCREEN ===================== -->
+<section id="done-screen" class="screen hidden">
+  <div class="setup-card center-text">
+    <h1>🎉 That's a wrap!</h1>
+    <p class="tagline">Every speaker has had their turn.</p>
+    <div class="controls stacked">
+      <button id="play-again-btn" class="btn-primary btn-large">↺ Replay (same slides)</button>
+      <button id="new-game-btn" class="btn-secondary">New Game</button>
+    </div>
+  </div>
+</section>
+
+<script src="slides.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
