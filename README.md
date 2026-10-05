@@ -16,9 +16,8 @@ published URL. Everything runs client-side; there's no backend.
   slide.
 - The app computes slides-per-speaker (`speech length ÷ slide length`,
   default **90s / 30s = 3 slides**) and generates a big, shuffled pool of
-  slides — each one a random stock photo paired with an absurd
-  "corporate buzzword" title/subtitle (e.g. *"How We're Monetizing
-  Interdimensional Mail Service"*).
+  random stock photos. Slides carry **no forced caption or topic** — the
+  speaker just improvises off whatever image appears.
 - Every speaker gets a **guaranteed-unique** slice of that pool — nobody
   sees the same slide twice in a session, so nobody can prepare by watching
   someone else go first.
@@ -26,6 +25,10 @@ published URL. Everything runs client-side; there's no backend.
   current slide, slide-progress dots, and an overall progress bar. Slides
   auto-advance on their own timer with an audible cue; there are host
   controls to skip a slide, restart a turn, or jump to the next speaker.
+- If a speaker wants a starting topic for their whole speech, they can
+  optionally click **💡 Suggest a Topic**, which picks a random line from
+  [`topics.md`](./topics.md). Totally optional — clear it, re-roll it, or
+  never touch it.
 
 ### Controls
 
@@ -40,11 +43,18 @@ published URL. Everything runs client-side; there's no backend.
 
 ### Slide styles
 
-- **Photo + caption** (default) — pulls a random photo from
+- **Random photos** (default) — pulls a random photo from
   [picsum.photos](https://picsum.photos) for each slide. Requires internet
   access in the players' browsers.
-- **Caption only** — drops the photos and just shows the generated title/
-  subtitle on a gradient card. Works fully offline.
+- **Plain numbered cards** — drops the photos and just shows a big slide
+  number on a gradient card. Works fully offline.
+
+### Suggest a Topic
+
+`topics.md` is a plain Markdown bullet list — one topic per line. Edit it to
+add, remove, or replace topics; the app re-fetches it at runtime, so no code
+changes are needed. If the file can't be loaded (e.g. opened directly from
+disk without a server), a small built-in fallback list is used instead.
 
 ### Session codes
 

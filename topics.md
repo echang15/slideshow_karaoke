@@ -1,0 +1,105 @@
+# Suggested Topics
+
+A grab-bag of optional speech topics for Slideshow Karaoke. Click
+"Suggest a Topic" in the app to get a random one — or ignore this
+entirely and just wing it from the slides.
+
+Edit this list freely: add your own lines, remove ones you don't like.
+Each bullet becomes one possible topic.
+
+- The best piece of advice I never took
+- Why I'd survive a zombie apocalypse (or wouldn't)
+- The most useless skill I'm proud of having
+- If I ran this company for a day
+- A food combination everyone should try at least once
+- The worst vacation I've ever had
+- Why my childhood pet should run for president
+- A rule I think everyone should break sometimes
+- The one app I could never delete
+- How to fail spectacularly at a hobby
+- My theory on why socks disappear in the laundry
+- The weirdest compliment I've ever received
+- Why small talk is secretly a superpower
+- A conspiracy theory about office printers
+- The most overrated tourist destination
+- If animals could unionize
+- My go-to karaoke song and why it's perfect
+- The last time I was completely wrong about something
+- Why Mondays get an unfair reputation
+- A household chore that should be illegal
+- The best excuse for being late I've ever heard
+- If I could only eat one cuisine for the rest of my life
+- Why I'd make a terrible (or excellent) spy
+- The strangest thing in my junk drawer
+- A trend from the past that deserves a comeback
+- My plan for the first sentient toaster uprising
+- The one rule for a perfect road trip
+- Why I secretly love bad weather
+- A skill robots will never replace
+- The most chaotic family gathering story I have
+- If I had to give a TED talk tomorrow with zero notice
+- Why cereal is or isn't a soup
+- The best lesson I learned from a terrible job
+- A superstition I secretly believe
+- If I were in charge of naming paint colors
+- The most memorable thing a stranger ever said to me
+- Why patience is overrated (or underrated)
+- A gadget from science fiction I desperately want
+- The worst gift I've ever given or received
+- If I had to start a business tomorrow, what would it be
+- My unpopular opinion about a popular food
+- The best way to waste a Saturday
+- A rule from my childhood home that makes no sense now
+- Why everyone should learn to juggle
+- The strangest dream I can actually remember
+- If I could instantly master one instrument
+- My theory on why time moves faster as you get older
+- A workplace meeting that should have been an email
+- The best comeback I thought of five minutes too late
+- Why I'd make a great (or terrible) reality TV contestant
+- The most underrated letter of the alphabet
+- If animals narrated nature documentaries about humans
+- A life hack that actually works
+- The last thing that made me laugh until I cried
+- Why board games reveal someone's true personality
+- My pitch for the next Olympic sport
+- The strangest item I've ever found in a pocket
+- If I woke up as the opposite gender for a day
+- A food I was embarrassed to admit I liked
+- The best piece of unsolicited advice I ever gave
+- Why I think aliens would be disappointed in us
+- A tradition I'd invent if I could
+- The most dramatic thing that's happened in a grocery store I witnessed
+- If I had a warning label, what would it say
+- My theory on why the aux cord causes so many arguments
+- The worst way to find out your flight is delayed
+- A childhood fear that's honestly still a little valid
+- Why GPS voices need more personality options
+- The strangest compliment I've given someone
+- If I had to describe my personality using only kitchen appliances
+- A rule for group chats that everyone should follow
+- The best thing about being the middle child, oldest, or youngest
+- Why autocorrect is either a blessing or a curse
+- My plan for surviving a week without the internet
+- The most ridiculous thing I've Googled this year
+- If I could add one holiday to the calendar
+- A skill I regret not learning as a kid
+- The weirdest thing that's ever gone viral in my opinion
+- Why elevators bring out strange social behavior
+- My theory on why nobody actually reads the terms and conditions
+- The best way to break the ice with strangers
+- If I had to be stranded on a desert island with one object
+- A food that is wildly overhyped
+- The most chaotic thing that's happened at a wedding I attended
+- Why everyone secretly judges people by their playlist
+- My pitch for a reality show nobody's made yet
+- The strangest rule my family has at the dinner table
+- If I could swap lives with any fictional character for a week
+- A piece of technology I refuse to upgrade
+- The best bad decision I've ever made
+- Why silence in a conversation is more awkward than it should be
+- My theory on what my pet thinks about when I leave the house
+- The most useless thing I ever bought and don't regret
+- If I had to teach a class with zero preparation, what would it be
+- A rule of etiquette that doesn't make sense anymore
+- The weirdest small talk topic that's actually worked for me
